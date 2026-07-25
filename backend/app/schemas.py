@@ -46,6 +46,18 @@ class CarUpdate(BaseModel):
     description: Optional[str] = None
     image_url: Optional[str] = None
 
+class CarResponse(CarBase):
+    """
+    Schema returned to the frontend when retrieving
+    car information.
+    """
+
+    id: int
+
+    model_config = ConfigDict(
+        from_attributes=True
+    )
+
 
 # ==================================================
 # TEST DRIVE SCHEMAS
