@@ -45,3 +45,41 @@ class CarUpdate(BaseModel):
     charging_time: Optional[float] = None
     description: Optional[str] = None
     image_url: Optional[str] = None
+
+
+# ==================================================
+# TEST DRIVE SCHEMAS
+# ==================================================
+
+
+class TestDriveBase(BaseModel):
+    """
+    Common fields for test-drive booking.
+    """
+
+    customer_name: str
+    email: str
+    phone: str
+    car_id: int
+    preferred_date: date
+
+class TestDriveCreate(TestDriveBase):
+    """
+    Schema used when creating a test-drive booking.
+    """
+
+    pass
+
+
+class TestDriveResponse(TestDriveBase):
+    """
+    Schema returned after creating or retrieving
+    a test-drive booking.
+    """
+
+    id: int
+    created_at: datetime
+
+    model_config = ConfigDict(
+        from_attributes=True
+    )
